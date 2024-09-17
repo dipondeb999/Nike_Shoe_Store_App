@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:nike_shoe_store/presentation/widgets/all_items_widget.dart';
+import 'package:nike_shoe_store/presentation/widgets/raw_items_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,6 +18,12 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 15),
               // build search bar
               _buildSearchBar(),
+              const SizedBox(height: 15),
+              // Raw items widget
+              const RawItemsWidgets(),
+              const SizedBox(height: 20),
+              // all items widget
+              const AllItemsWidget(),
             ],
           ),
         ),

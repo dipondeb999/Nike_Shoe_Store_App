@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_shoe_store/presentation/screens/home_screen.dart';
+import 'package:nike_shoe_store/presentation/screens/item_screen.dart';
 import 'package:nike_shoe_store/presentation/screens/login_screen.dart';
 
 class NikeShoeStore extends StatelessWidget {
@@ -16,6 +17,7 @@ class NikeShoeStore extends StatelessWidget {
       routes: {
         "/" : (context) => const LoginScreen(),
         "HomeScreen" : (context) => const HomeScreen(),
+        "ItemScreen" : (context) => const ItemScreen(),
       },
     );
   }

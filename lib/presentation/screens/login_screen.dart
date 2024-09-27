@@ -71,6 +71,7 @@ class LoginScreen extends StatelessWidget {
               Container(
                 width: 200,
                 child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Enter Username',
@@ -106,6 +107,7 @@ class LoginScreen extends StatelessWidget {
               Container(
                 width: 200,
                 child: TextFormField(
+                  obscureText: true,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Enter Password',

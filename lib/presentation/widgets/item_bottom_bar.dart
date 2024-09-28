@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nike_shoe_store/presentation/widgets/bottom_cart_sheet.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 
 class ItemBottomBar extends StatelessWidget {
   const ItemBottomBar({super.key});
@@ -15,7 +17,7 @@ class ItemBottomBar extends StatelessWidget {
           // add to cart button
           _buildAddToCartButton(),
           // shopping bag button
-          _buildShoppingBagButton(),
+          _buildShoppingBagButton(context),
         ],
       ),
     );
@@ -55,24 +57,40 @@ class ItemBottomBar extends StatelessWidget {
     );
   }
 
-  Widget _buildShoppingBagButton() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-      decoration: BoxDecoration(
-          color: const Color(0xFF475269),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFF475269).withOpacity(0.3),
-              blurRadius: 5,
-              spreadRadius: 1,
-            ),
-          ]
-      ),
-      child: const Icon(
-          Icons.shopping_bag,
-          color: Colors.white,
-          size: 45
+  Widget _buildShoppingBagButton(context) {
+    return InkWell(
+      onTap: () {
+        showSlidingBottomSheet(
+            context,
+            builder: (context) {
+              return SlidingSheetDialog(
+                  elevation: 8,
+                  cornerRadius: 16,
+                  builder: (context, state) {
+                    return const BottomCartSheet();
+                  }
+              );
+            }
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+        decoration: BoxDecoration(
+            color: const Color(0xFF475269),
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF475269).withOpacity(0.3),
+                blurRadius: 5,
+                spreadRadius: 1,
+              ),
+            ]
+        ),
+        child: const Icon(
+            Icons.shopping_bag,
+            color: Colors.white,
+            size: 45
+        ),
       ),
     );
   }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nike_shoe_store/presentation/screens/home_screen.dart';
 import 'package:nike_shoe_store/presentation/screens/item_screen.dart';
 
-class NikeShoeStore extends StatelessWidget {
-  const NikeShoeStore({super.key});
+class NikeShoeStoreApp extends StatelessWidget {
+  const NikeShoeStoreApp({super.key});
 
   @override
   Widget build(BuildContext context) {

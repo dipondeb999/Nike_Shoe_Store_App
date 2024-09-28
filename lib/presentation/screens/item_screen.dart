@@ -18,7 +18,7 @@ class ItemScreen extends StatelessWidget {
               // image section
               _buildImageSection(context),
               // description
-              _buildDescription(context),
+              _buildDescriptionSection(context),
             ],
           ),
         ),
@@ -105,7 +105,7 @@ class ItemScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDescription(context) {
+  Widget _buildDescriptionSection(context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       height: MediaQuery.of(context).size.height * 0.4,
@@ -123,103 +123,115 @@ class ItemScreen extends StatelessWidget {
               spreadRadius: 1,
             ),
           ]),
-      child: Column(
-        children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "New Nike Shoe",
-                style: TextStyle(
-                  color: const Color(0xFF475269),
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
+      child: _buildDescriptionText(),
+    );
+  }
+
+  Widget _buildDescriptionText() {
+    return Column(
+      children: [
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "New Nike Shoe",
+              style: TextStyle(
+                color: Color(0xFF475269),
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                "\$55",
-                style: TextStyle(
-                  color: Colors.redAccent,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
-          Container(
-            alignment: Alignment.centerLeft,
-            child: RatingBar.builder(
-              initialRating: 4,
-              minRating: 1,
-              direction: Axis.horizontal,
-              itemSize: 20,
-              itemCount: 5,
-              itemPadding: const EdgeInsets.symmetric(horizontal: 4),
-              itemBuilder: (context, _) {
-                return const Icon(
-                  Icons.favorite,
-                  color: Colors.redAccent,
-                );
-              },
-              onRatingUpdate: (index) {},
             ),
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            "This is description of the shoe product. This is description of the shoe product. This is description of the shoe product. This is description of the shoe product.",
-            textAlign: TextAlign.justify,
-            style: TextStyle(
-              color: Color(0xFF475269),
+            Text(
+              "\$55",
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
+              ),
             ),
+          ],
+        ),
+        const SizedBox(height: 15),
+        _buildRatingSection(),
+        const SizedBox(height: 20),
+        const Text(
+          "This is description of the shoe product. This is description of the shoe product. This is description of the shoe product. This is description of the shoe product.",
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            color: Color(0xFF475269),
           ),
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              const Text(
-                "Size: ",
-                style: TextStyle(
-                  color: Color(0xFF475269),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(width: 10),
-              Row(
-                children: [
-                  for (int i = 5; i < 10; i++)
-                    Container(
-                      margin:
-                      const EdgeInsets.symmetric(horizontal: 5),
-                      height: 35,
-                      width: 35,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF5F9FD),
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFF475269)
-                                .withOpacity(0.3),
-                            blurRadius: 5,
-                            spreadRadius: 1,
-                          ),
-                        ],
-                      ),
-                      child: Text(
-                        i.toString(),
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-            ],
-          ),
-        ],
+        ),
+        const SizedBox(height: 20),
+        _buildItemsSizeSection(),
+      ],
+    );
+  }
+
+  Widget _buildRatingSection() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      child: RatingBar.builder(
+        initialRating: 4,
+        minRating: 1,
+        direction: Axis.horizontal,
+        itemSize: 20,
+        itemCount: 5,
+        itemPadding: const EdgeInsets.symmetric(horizontal: 4),
+        itemBuilder: (context, _) {
+          return const Icon(
+            Icons.favorite,
+            color: Colors.redAccent,
+          );
+        },
+        onRatingUpdate: (index) {},
       ),
+    );
+  }
+
+  Widget _buildItemsSizeSection() {
+    return Row(
+      children: [
+        const Text(
+          "Size: ",
+          style: TextStyle(
+            color: Color(0xFF475269),
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(width: 10),
+        Row(
+          children: [
+            for (int i = 5; i < 10; i++)
+              Container(
+                margin:
+                const EdgeInsets.symmetric(horizontal: 5),
+                height: 35,
+                width: 35,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF5F9FD),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF475269)
+                          .withOpacity(0.3),
+                      blurRadius: 5,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+                child: Text(
+                  i.toString(),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ],
     );
   }
 }

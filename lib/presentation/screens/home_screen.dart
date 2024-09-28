@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:nike_shoe_store/presentation/widgets/all_items_widget.dart';
+import 'package:nike_shoe_store/presentation/widgets/home_bottom_bar.dart';
 import 'package:nike_shoe_store/presentation/widgets/raw_items_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -28,6 +29,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: const HomeBottomBar(),
     );
   }
   Widget _buildCustomAppBar() {
